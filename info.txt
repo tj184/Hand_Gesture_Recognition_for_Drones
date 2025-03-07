@@ -13,4 +13,26 @@ Training using CPU ==> python train.py --img 640 --batch 16 --epochs 50 --data p
 
 Training using CPU ==> python train.py --img 640 --batch 16 --epochs 50 --data ./palm_data.yaml --cfg models/yolov5s.yaml --weights yolov5s.pt --device cpu
 
+Drone Hardware Requirements==>
+
+1.Camera:
+The drone should be equipped with a camera that can stream live video to the ground station or your controlling computer. A common choice for this kind of project is the DJI Tello, which has a camera and can stream video over WiFi.
+
+2.Processing Power:
+Running YOLOv5 locally on a drone requires sufficient processing power:
+
+DJI Tello has limited computing power, so it cannot directly run YOLOv5 on-board. Instead, the video feed is sent to a remote system (e.g., laptop, PC, or embedded device).
+NVIDIA Jetson Nano or Jetson Xavier can handle the YOLOv5 inference on the drone itself, providing the necessary GPU power for real-time processing.
+
+3. Connectivity:
+For drones like the DJI Tello, you can use the built-in WiFi connection to stream the video feed to your computer and send back control signals via the djitellopy library.
+If using custom drones with NVIDIA Jetson or Raspberry Pi, the video stream can be processed locally, and control commands can be sent via an onboard computer connected to the drone via a serial interface or WiFi.
+
+4.Software Requirements
+Python: Install Python 3.6+ (preferably 3.8 or higher).
+PyTorch: Install PyTorch for running YOLOv5. Depending on your system, you may need the CUDA version of PyTorch if you're running it on a GPU.
+OpenCV: Used for capturing and processing the video feed from the drone.
+djitellopy: For controlling the DJI Tello drone (or other drones with similar SDKs).
+YOLOv5: Clone the YOLOv5 repo and train your model on custom datasets, or use a pretrained model.
+
 
